@@ -159,7 +159,7 @@ open class NotificationsService : FirebaseMessagingService() {
           )
 
           DISMISS_SELECTED_TYPE -> onDismissNotifications(
-            intent.extras?.getStringArrayList(IDENTIFIERS_KEY)!! // throw exception if empty
+            intent.extras?.getStringArray(IDENTIFIERS_KEY)!!.asList() // throw exception if empty
           )
 
           DISMISS_ALL_TYPE -> onDismissAllNotifications()
@@ -180,10 +180,10 @@ open class NotificationsService : FirebaseMessagingService() {
     }
   }
 
-  fun onPresentNotification(notification: Notification, behavior: NotificationBehavior?) = presentationDelegate.presentNotification(notification, behavior)
-  fun onGetAllPresentedNotifications() = presentationDelegate.getAllPresentedNotifications()
-  fun onDismissNotifications(identifiers: Collection<String>) = presentationDelegate.dismissNotifications(identifiers)
-  fun onDismissAllNotifications() = presentationDelegate.dismissAllNotifications()
+  open fun onPresentNotification(notification: Notification, behavior: NotificationBehavior?) = presentationDelegate.presentNotification(notification, behavior)
+  open fun onGetAllPresentedNotifications() = presentationDelegate.getAllPresentedNotifications()
+  open fun onDismissNotifications(identifiers: Collection<String>) = presentationDelegate.dismissNotifications(identifiers)
+  open fun onDismissAllNotifications() = presentationDelegate.dismissAllNotifications()
 
   override fun onMessageReceived(remoteMessage: RemoteMessage) = firebaseMessagingDelegate.onMessageReceived(remoteMessage)
   override fun onNewToken(token: String) = firebaseMessagingDelegate.onNewToken(token)
