@@ -40,11 +40,6 @@ public class NotificationsHelper {
   public static final String NOTIFICATIONS_KEY = "notifications";
   public static final String CATEGORIES_KEY = "categories";
 
-  public static final String INTERNAL_IDENTIFIER_SCHEME = "expo-notifications";
-  public static final String INTERNAL_IDENTIFIER_AUTHORITY = "foreign_notifications";
-  public static final String INTERNAL_IDENTIFIER_TAG_KEY = "tag";
-  public static final String INTERNAL_IDENTIFIER_ID_KEY = "id";
-
   private SharedPreferencesNotificationCategoriesStore mStore;
   private Context mContext;
 
